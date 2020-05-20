@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Aggiorna Database</title>
+<style>
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+	body{
+
+		background: rgb(230, 230, 230); /* Standard syntax */
+		
+	}
+	.div1{
+		margin:0 auto;
+		width:1400px;
+		display:block;
+	}
+	.subdiv1{
+		display: inline-flex;
+		display: -webkit-inline-flex;
+		width: 100%;
+		height: 140px;
+	}
+	.subdiv2{
+		margin: 0 auto;
+		display: table;
+		height: 200px!important;
+	}
+	.subdiv3{
+		/*width:60%;*/
+		margin: 0 auto;
+		display: table;
+		width:30%;
+	}
+	#logo{
+		width:282px;
+		height:127px;
+	}
+	.logout input[type="submit"] {
+		width: 160px;
+		height: 35px;
+		background: #fff;
+		border: 1px solid #fff;
+		cursor: pointer;
+		border-radius: 2px;
+		color: #5379fa;
+		font-family: 'Exo', sans-serif;
+		font-size: 16px;
+		font-weight: 400;
+		padding: 6px;
+		margin-top: 10px;
+	}
+
+	.logout input[type=submit]:hover{
+		opacity: 0.8;
+	}
+
+	.logout input[type=submit]:active{
+		opacity: 0.6;
+	}
+
+	.logout input[type=text]:focus{
+		outline: none;
+		border: 1px solid rgba(255,255,255,0.9);
+	}
+
+	.logout input[type=password]:focus{
+		outline: none;
+		border: 1px solid rgba(255,255,255,0.9);
+	}
+
+	.logout input[type=submit]:focus{
+		outline: none;
+	}
+
+	::-webkit-input-placeholder{
+	   color: rgba(255,255,255,0.6);
+	}
+
+	::-moz-input-placeholder{
+	   color: rgba(255,255,255,0.6);
+	}
+	.name div{
+		color: #fff;
+		font-family: 'Exo', sans-serif;
+		font-size: 35px;
+		font-weight: 500;
+	}
+	.name div span{
+		color: #5379fa !important;
+	}
+	.info div{
+		color: #fff;
+		font-family: 'Verdana';
+		
+		font-size: 20px;
+		font-weight: bold;
+		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	}
+	.info div span{
+		font-family: 'Exo', sans-serif;
+		color: #5379fa !important;
+		font-weight: 500;
+		text-shadow: none !important;
+		}
+	.image,.info,.user,.vertical-line,.voltoumano{
+		display:table-cell;
+		vertical-align:middle;
+	}
+	.voltoumano{
+		width: 450px;
+		height: 400px;
+		overflow: hidden;
+	}
+	.vertical-line{
+		width: 3px;
+		background-color: silver;
+		height: 730px;
+		border: 2px #f2f2f2;
+		border-radius: 2px;
+	}
+	
+	.invia{
+		display: table-cell;
+		vertical-align: bottom;
+		padding: 120px;/*qui gli elementi sono tutti importanti, ho lasciato il padding per farlo staccare dalla parte inferiore del contenitore*/
+	}
+
+
+	.invia input[type=submit],.divinput > input[type="submit"],.divinput > button{/*qui ho dovuto estendere al primoelemento di subdiv3, non si estende anche ad ulterori elementi contenuto al suo interno(altri input), ma solo se è uno dei figli 'diretti' del contenitore*/
+		width: 160px;
+		height: 35px;
+		background: #597ef9;
+		border: 1px silver;
+		cursor: pointer;
+		border-radius: 2px;
+		color: #fff;
+		font-family: 'Exo', sans-serif;
+		font-size: 16px;
+		font-weight: 400;
+		padding: 6px;
+		margin-top:245%;   /*qua per muovere su e giu*/cosa...*/
+	}
+	
+	.divinput > input[type="submit"], .divinput > button{/*rimuovo gli attributi che non doveva ereditare*/
+		margin-top:0;
+	}
+	
+	.divinput{
+		vertical-align: bottom;
+		margin-top: 20px;
+	}
+	
+		.invia input[type=button]{
+		width: 160px;
+		height: 35px;
+		background: #597ef9;
+		border: 1px silver;
+		cursor: pointer;
+		border-radius: 2px;
+		color: #fff;
+		font-family: 'Exo', sans-serif;
+		font-size: 16px;
+		font-weight: 400;
+		padding: 6px;
+		margin-top:100%;
+	}
+
+
+	.invia input[type=button]:hover{
+	opacity: 0.8;
+	}
+
+	.invia input[type=button]:active{
+		opacity: 0.6;
+	}
+
+	.invia input[type=text]:focus{
+		outline: none;
+		border: 1px solid rgba(255,255,255,0.9);
+	}
+
+
+	.invia input[type=password]:focus{
+		outline: none;
+		border: 1px solid rgba(255,255,255,0.9);
+	}
+
+
+	.invia input[type=button]:focus{
+		outline: none;
+	}
+	.checkbox{
+		height: 530px;
+		width: 200px;
+		/*overflow-y: scroll;*/
+	}
+	.checkbox li{
+		color: #5379fa;
+		font-family: 'Exo', sans-serif;
+		font-size: 18px;
+		font-weight:bold;
+	}
+	.checkbox li span{
+		color: #fff !important;
+		font-family: 'Verdana';
+		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	}
+
+
+	.imname div{	
+		text-align: center;
+		color: #fff;
+		font-family: 'Exo', sans-serif;
+		font-size: 25px;
+		font-weight: 500;
+	}
+	.imname div span{
+		color: #5379fa !important;
+	}
+	.scegli{
+		margin:0 auto;
+		margin-top: 20px;
+		display:block;
+		width:200px;
+		max-height:200px;
+	}
+	.scroll{
+		height: 530px;
+	}
+	ul{
+		list-style-type: none;
+	}
+	.scegli.selected {
+		border:5px solid #597ef9;
+		
+	}
+	.selected-image{
+		color:#5379fa;
+		font-size: 20px;
+        font-weight: 500;
+		font-family: 'Exo', sans-serif;
+	}
+	.scroll > p{
+		color: #5379fa !important;
+		font-family: 'Exo', sans-serif;
+		font-size: 20px;
+		font-weight: 500;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+window.onload = function(){
+
+var img = [];
+{% for imagelego in listaimmagini %}
+img.push("{{url_for('static', filename = imagelego)}}");
+{% endfor %}
+
+
+	var parent = document.getElementsByClassName('scroll')[0];
+	if(img.length>0){
+		parent.style.overflowY = 'scroll';
+		for(i=0;i<img.length;i++){
+			image = document.createElement('IMG');
+			image.src = img[i];
+			image.alt = '';
+			image.setAttribute("class", "scegli");
+			parent.appendChild(image);
+		}
+		$('.scegli').click(function() {
+			var src = $(this).attr('src'),
+			filename = src.substring(src.lastIndexOf('/')+ 1);
+			$('.scegli').removeClass('selected');
+			$(this).addClass('selected');
+			$('.selected-image span').text(filename);
+			document.getElementById('chosen').value = filename;<!--questo mi fa aggiungere filename come value del hiddenfield con nome immagine scelta-->
+		});
+	}
+}
+</script>
+<!--per comodità non voglio che si torni indietro una volta che si è fatto il login-->
+
+
+</head>
+
+<body>
+	<div style="display:inline-flex;width:100%;">
+	<div class="div1">
+		<div class="subdiv1">
+			<div class="subdiv2">
+				<div class="image">
+					<img src="{{url_for('static', filename = 'ivl.png')}}" id="logo" alt="logo">					
+				</div>
+			</div>
+			<div class="subdiv2">
+				<div class="info">
+					<div>
+						<span> 1) Guarda l'immagine <br>2) Scegli i filtri da applicare e selezionali </span> <br>
+							3) Premi </span>Invia al DB <span> per aggiungere il nuovo record al database </span>
+					</div>
+				</div>
+			</div>
+			<div class="subdiv2">
+				<div class="user">
+					<div class="name">
+						<div><span> Ciao, {{ namehtml }} </span> </div>
+					</div>
+					<form action = "/logout" method = "POST">
+					<div class="logout">
+						<input value="Logout" type="submit">
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="subdiv1"><!-- qui visto che ogni contenitore è del 30% il margine risultante su 3 colonne sarà del 5% -->
+			<div class="subdiv3" style = "margin-top: 100px">
+			<div class= "voltoumano" style="width:30%;margin-right:0px;margin-top: 55px;">
+			
+					<img src="{{url_for('static', filename = volto_name )}}" style="margin:0 auto;margin-top: 58px;display:block;width:300px;max-height:300px;" alt ="" /> <br>
+				<!--	<img src="{{url_for('static', filename = name_u_h )}}" style="margin:0 auto;margin-top: 58px;display:block;width:300px;max-height:300px;" alt ="" /> <br> -->
+		
+				</div>
+			</div>
+			
+			<div class="subdiv3" style="margin: 0 auto;margin-top: 25px;">
+				<ul>
+					<li>
+					<form action = "/addnewrecord" method = "POST">
+						<ul class= "checkbox"><!-- Essendo una lista di elementi va fatta con ul li(documentazione) che è il tag creato per le liste(invece di <div>)-->
+<li><span>Caratteristiche</span></li><li><ul>
+<li><input type="checkbox" name="baffi" > Baffi</li>
+<li><input type="checkbox" name="barba" > Barba </li>
+<li><input type="checkbox" name="benda"> Benda Occhio</li>
+<li><input type="checkbox" name="cap" > Capelli lunghi</li>
+<li><input type="checkbox" name="elmo" > Cappello o elmo</li>
+<li><input type="checkbox" name="cica" > Cicatrice</li>
+<li><input type="checkbox" name="fascia" > Fascia</li>
+<li><input type="checkbox" name="lent" > Lentiggini</li>
+<li><input type="checkbox" name="lingua"> Lingua </li> 
+<li><input type="checkbox" name="maschera" > Maschera</li>
+<li><input type="checkbox" name="neo" > Neo</li>
+<li><input type="checkbox" name="occhiali"> Occhiali</li> 
+<li><input type="checkbox" name="pizz" > Pizzetto </li>
+<li><input type="checkbox" name="ross" > Rossetto</li>
+<li><input type="checkbox" name="rughe" > Rughe</li>
+<li><input type="checkbox" name="sopra" > Sopracciglia </li>
+<li><input type="checkbox" name="trucco" > Trucco</li>
+</ul></li><li><span> Genere</span></li><li><ul>
+<li> <input type="radio" name="genere" value = "M"/> Maschio </li>
+<li> <input type="radio" name="genere" value = "F"/> Femmina </li>
+						</ul>
+				</li>
+			</ul>
+			</li><li>
+				<ul class="checkbox"><li>
+				
+					<div class="divinput" >
+						<input type="submit" value="Invia al DB" style="margin: 0 auto;display: block; margin-top:33px;">
+						
+					</div>
+					
+			</li>
+			</ul>
+			</li>
+			</form>
+			</ul>
+			</div>
+			
+		</div>
+	</div>
+	</div>
+</body>
+
+</html>	

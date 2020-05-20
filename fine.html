@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="UTF-8">
+<title>Fine</title>
+  
+  
+  
+<style>
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+	body{
+
+		background: rgb(230, 230, 230);
+		
+	}
+
+
+
+	.image{
+		top: 130px;
+		left: 625px;
+		z-index: 2;
+
+	}
+
+	.header{
+		top: 320px;
+		left: 400px;
+		z-index: 2;
+	}
+
+	.header div{
+		color: #fff;
+		font-family: 'Verdana';
+		font-size: 22px;
+		font-weight: bold;
+		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	}
+
+	.header div span{
+		font-family: 'Exo', sans-serif;
+		color: #5379fa !important;
+		text-shadow: none !important;
+		font-weight: 500;
+	}
+
+
+.ricomincia{
+	padding: 10px;
+	z-index: 2;
+}
+
+.ricomincia input[type=submit]{
+	width: 260px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #5379fa;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin:0 auto;
+	margin-top: 10px;
+	display: block;
+}
+
+.ricomincia input[type=submit]:hover{
+	opacity: 0.8;
+}
+
+.ricomincia input[type=submit]:active{
+	opacity: 0.6;
+}
+
+.ricomincia input[type=text]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.ricomincia input[type=password]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.ricomincia input[type=submit]:focus{
+	outline: none;
+}
+
+::-webkit-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
+
+::-moz-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
+</style>
+</head>
+<!--per comodità non voglio che si torni indietro una volta che si è fatto il login-->
+<script language="javascript">
+if(history.length>0)history.forward()
+</script>
+<body>
+
+<div style="display:inline-flex;width:100%;min-height:700px;">
+	<div style="display:block;margin:0 auto;width:1024px">
+		<div style="display:table;margin:0 auto;height:100%;"><!-- Qui occorre ripetere margin:0 auto perchè la prima centro il contenitore padre, mentre la seconda volta centro il contenuto-->
+			<div style="display:table-cell;vertical-align:middle;">
+				<div class= "image">
+					<img src="{{url_for('static', filename = 'ivl.png')}}" id="logo" alt="logo" style="width:282px;height:127px;margin: 0 auto;display: block;" ><!-- <img src="{{url_for('static', filename = 'ivl.png')}}" />-->
+				</div>
+				<div class="header">
+					<div><span> Grazie, hai classificato tutte le immagini! <br> Premi </span> Ricomincia <span>per iniziare da capo il riconoscimento di volti con un altro username</span></div>
+				</div>
+				<form action = "/logout", method = "POST">
+				<div class="ricomincia">
+					<input type="submit" value="Ricomincia">  
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>			
+</body>
+</html>
